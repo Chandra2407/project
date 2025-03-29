@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.1); }
+  }
+
+  @keyframes floatBalloon {
+    0% { transform: translate(0, 120vh) rotate(0deg); }
+    100% { transform: translate(var(--x-end), -20vh) rotate(var(--rotation)); }
+  }
+
+  @keyframes sway {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+  }
+
+  .animate-float {
+    animation: float 2s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin 3s linear infinite;
+  }
+
+  .animate-bounce-custom {
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  .animate-sway {
+    animation: sway 3s ease-in-out infinite;
+  }
+
+  .balloon {
+    position: fixed;
+    width: 40px;
+    height: 50px;
+    border-radius: 50%;
+    animation: floatBalloon 15s linear forwards;
+    z-index: 50;
+  }
+
+  .flower {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    z-index: 40;
+    transform-origin: bottom center;
+  }
+  .flower.flower-left {
+    left: 0px;
+    animation: sway 3s ease-in-out infinite;
+  }
+  .flower.flower-right {
+    right: 0px;
+    animation: sway 3s ease-in-out infinite;
+  }
+
+  @media (max-width: 768px) {
+    .flower {
+      width: 50px;
+      height: 50px;
+    }
+    .flower-left {
+      left: 0px;
+    }
+  
+    .flower-right {
+      right: 0px;
+    }
+  }
+}
