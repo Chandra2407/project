@@ -1,6 +1,11 @@
 import React, { useState, useEffect, memo } from 'react';
 import { Heart, Cake, Star, Gift, Flower } from 'lucide-react';
 import './App.css'; // Import the CSS file for global styles
+import image1 from '../images/1.jpg';
+import image2 from '../images/2.jpg';
+import image3 from '../images/3.jpg';
+import image5 from '../images/5.jpg';
+import ImageList from './ImageList'; // Import the ImageList component
 
 // Memoized Balloon component to prevent unnecessary re-renders
 const Balloon = memo(({ color, delay, xEnd, rotation }: { color: string; delay: number; xEnd: number; rotation: number }) => {
@@ -32,6 +37,13 @@ const App = () => {
         setBalloons(newBalloons);
     }, []);
 
+    const imageListData = [
+        { src: image1, alt: 'Sassy cloud', description: 'I shared this when we were early in our talking stage.' },
+        { src: image2, alt: 'Showcasing talent', description: 'You just showcasing your talent.' },
+        { src: image5, alt: 'Another masterpiece', description: 'Another masterpiece you created.' },
+        { src: image3, alt: 'Aww you drew me', description: 'Aww, you drew me! So cute, I loved it.' },
+    ];
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-pink-100 to-purple-100">
             {/* Balloons */}
@@ -54,6 +66,14 @@ const App = () => {
 
             {/* Memory Timeline */}
             <MemoryTimeline />
+
+            {/* Image List Section */}
+            <div className="py-20 bg-white/80">
+                <div className="container mx-auto px-4 text-center">
+                    <h2 className="text-4xl font-bold text-gray-800 mb-8">Your Gallery</h2>
+                    <ImageList images={imageListData} />
+                </div>
+            </div>
 
             {/* Mini Puzzle Game */}
             <MiniPuzzleGame />
@@ -124,36 +144,24 @@ const MemoryTimeline = () => (
                         description="Once an Artist always an artist..."
                     />
                     <MemoryCard
+                        date="Shopping"
+                        image="https://images.unsplash.com/photo-1591085686350-798c0f9faa7f?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        description="We will go shopping every week okay"
+                    />
+                    <MemoryCard
+                        date="Gedi"
+                        image="https://images.unsplash.com/photo-1489786102881-d830f187e483?q=80&w=2036&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        description="Evening m  gedi marne bhi chlenge"
+                    />
+                    <MemoryCard
+                        date="Rock Music"
+                        image="https://images.unsplash.com/photo-1629276301820-0f3eedc29fd0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        description="Emo Girly..."
+                    />
+                    <MemoryCard
                         date="Happy Birthday my beautiful princess"
                         image="https://images.unsplash.com/photo-1513151233558-d860c5398176"
                         description="Here's to many more beautiful moments..."
-                    />
-                </div>
-            </div>
-        </div>
-        <div className="py-20 bg-white/80">
-            <div className="container mx-auto px-4">
-                <h2 className="text-4xl font-bold text-center text-gray-800 mb-16">Memories we shared together</h2>
-                <div className="grid md:grid-cols-2 gap-8">
-                    <MemoryCard
-                        date="Sassy cloud"
-                        image="../images/1.jpg"
-                        description="I shared this when we were early in our talking stage"
-                    />
-                    <MemoryCard
-                        date="You just show casing your talent"
-                        image="../images/2.jpg"
-                        description=""
-                    />
-                    <MemoryCard
-                        date="You just show casing your another masterpiece"
-                        image="../images/5.jpg"
-                        description=""
-                    />
-                    <MemoryCard
-                        date="Aww you drew me..."
-                        image="../images/3.jpg"
-                        description="So cutee...i loved it"
                     />
                 </div>
             </div>

@@ -11,3 +11,29 @@ body {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
 }
+
+.girl-animation {
+    animation: sway 2s infinite ease-in-out;
+}
+
+.cat-animation {
+    animation: bounce 1.5s infinite ease-in-out;
+}
+
+@keyframes sway {
+    0%, 100% {
+        transform: rotate(-10deg);
+    }
+    50% {
+        transform: rotate(10deg);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
